@@ -1,4 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-
+    {% for post in post_list %}
+        <div class="card">
+            <h2>{{ post.title }}</h2>
+            <h4>By: {{ post.author }}</h4>
+            <h5>Last updated: {{ post.updated_on }}</h5>
+            <hr>
+            <p class="card-text" >{{ post.content|slice:":200" }}</p>
+        </div> 
+    {% endfor %}
 {% endblock %}
+
+{% block side-bar %}
+    <h2>This is the sidebar</h2>
+    <hr>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus 
+        aperiam perspiciatis esse cupiditate distinctio minima dignissimos voluptas 
+        temporibus culpa cum illo numquam dolores a, alias debitis iste cumque sed 
+        omnis in deserunt perferendis eius corrupti. Qui, minima. Cupiditate eum 
+        velit odit modi porro voluptate cumque optio neque non fuga.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto facilis 
+        rem dolorem? Exercitationem sequi maxime dolorem eveniet optio praesentium 
+        rem ratione obcaecati, delectus adipisci animi deleniti voluptatum. Rerum eius 
+        fugiat laborum inventore mollitia corporis!
+    </p>
+{% endblock side-bar %}

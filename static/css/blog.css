@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h1 {
+	font-weight: 700;
+}
+
+p {
+	line-height: 1.75em;
+}
+
+body {
+	background: rgb(255, 246, 229);
+	color: rgb(5, 0, 46);
+	font-family: 'Roboto Mono', monospace;
+}
+
+.main-content {
+	display: flex;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+	align-items: center;
+	flex: 1;
+	margin-top: 2em;
+}
+
+.side-bar {
+	background: rgb(15, 116, 69);
+	color: white;
+	padding: 1em;
+	width: 35ch;
+}
+
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: rgb(35, 194, 120);
+	padding: 0.75em;
+}
+
+.header-title {
+	margin-left: 1em;
+}
+
+hr {
+	background: white;
+	color: white;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+}
+
+ul {
+	display: flex;
+	gap: 5em;
+	margin-right: 5em;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(5, 0, 46);
+}
+
+.card {
+	width: 70ch;
+	background: rgb(162, 255, 211);
+	padding: 1em;
+}
+
+.card-text {
+	width: 60ch;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	right: 1em;
+	text-align: right;
+}
