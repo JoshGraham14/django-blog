@@ -1,0 +1,15 @@
+<h1>Login</h1>
+{% for message in messages %}
+    <p style="color: green;">{{ message }}</p>
+{% endfor %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="username" name="username">
+    <br>
+    <label for="passwored">Password:</label>
+    <input type="password" name="password">
+    <br>
+    <input type="submit" name="login">
+</form>

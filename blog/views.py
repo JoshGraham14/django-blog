@@ -1,11 +1,81 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
 from .models import Post
 
+from .forms import PostForm, CreateUserForm
 
-class PostList(generic.ListView):
+
+# class PostList(generic.ListView):
+#     queryset = Post.objects.filter(status=1).order_by('-created_on')
+#     template_name = 'index.html'
+
+def register(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    else:
+        form = CreateUserForm()
+
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, f'Account was created for {user}')
+
+                return redirect('login_page')
+
+        context = {'form': form}
+        return render(request, 'register.html', context)
+
+
+def login_page(request):
+    # if request.user.is_authenticated:
+    #     return redirect('/')
+    # else:
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            messages.info(request, 'username OR password is incorrect')
+
+    context = {}
+    return render(request, 'login.html', context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login_page')
+
+
+@login_required(login_url='login_page')
+def index(request):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    context = {'post_list': queryset}
+    return render(request, 'index.html', context)
+
+
+@login_required(login_url='login_page')
+def new_post(request):
+    form = PostForm(user=request.user)
+    if request.method == 'POST':
+        form = PostForm(request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form': form}
+
+    return render(request, 'newpost.html', context)
 
 
 class PostDetail(generic.DetailView):

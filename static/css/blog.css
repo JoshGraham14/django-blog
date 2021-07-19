@@ -50,6 +50,21 @@ body {
 	margin-left: 1em;
 }
 
+.new-post-form {
+	display: flex;
+	flex-direction: column;
+	width: 70ch;
+}
+
+.new-post-form label {
+	margin-bottom: 0.5em;
+	font-weight: 700;
+}
+
+.new-post-form input {
+	margin-bottom: 1.5em;
+}
+
 hr {
 	background: white;
 	color: white;
@@ -61,6 +76,8 @@ ul {
 	display: flex;
 	gap: 5em;
 	margin-right: 5em;
+	justify-content: center;
+	align-items: center;
 }
 
 li {
@@ -80,6 +97,28 @@ a {
 
 .card-text {
 	width: 60ch;
+}
+
+button {
+	border: none;
+	background: rgb(47, 28, 214);
+	padding: 1em 0em;
+	color: white;
+	border-radius: 1.125rem;
+}
+
+button:hover {
+	cursor: pointer;
+	background: rgb(110, 120, 255);
+}
+
+.new-post-btn {
+	color: white;
+	padding: 1em 3em;
+}
+
+.new-post-btn:hover {
+	color: black;
 }
 
 footer {

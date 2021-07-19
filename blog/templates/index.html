@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <button><a class="new-post-btn" href="{% url 'new_post' %}">New Post</a></button>
     {% for post in post_list %}
         <div class="card">
             <h2>{{ post.title }}</h2>
@@ -9,6 +10,8 @@
             <p class="card-text" >{{ post.content|slice:":200" }}</p>
         </div> 
     {% endfor %}
+
+    <span> Hello, {{ request.user }}</span>
 {% endblock %}
 
 {% block side-bar %}
