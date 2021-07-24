@@ -10,12 +10,10 @@
             <p class="card-text" >{{ post.content|slice:":200" }}</p>
         </div> 
     {% endfor %}
-
-    <span> Hello, {{ request.user }}</span>
 {% endblock %}
 
 {% block side-bar %}
-    <h2>This is the sidebar</h2>
+    <h2>Hello, {{ request.user }}</h2>
     <hr>
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus 

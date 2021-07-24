@@ -93,6 +93,7 @@ a {
 	width: 70ch;
 	background: rgb(162, 255, 211);
 	padding: 1em;
+	border-radius: 1rem;
 }
 
 .card-text {

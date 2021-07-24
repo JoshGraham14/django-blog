@@ -6,37 +6,29 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .models import Post
-
 from .forms import PostForm, CreateUserForm
+from .decorators import unauthenticated_user, login_needed
 
 
-# class PostList(generic.ListView):
-#     queryset = Post.objects.filter(status=1).order_by('-created_on')
-#     template_name = 'index.html'
-
+@unauthenticated_user
 def register(request):
-    if request.user.is_authenticated:
-        return redirect('/')
-    else:
-        form = CreateUserForm()
+    form = CreateUserForm()
 
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, f'Account was created for {user}')
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, f'Account was created for {user}')
 
-                return redirect('login_page')
+            return redirect('login_page')
 
-        context = {'form': form}
-        return render(request, 'register.html', context)
+    context = {'form': form}
+    return render(request, 'register.html', context)
 
 
+@unauthenticated_user
 def login_page(request):
-    # if request.user.is_authenticated:
-    #     return redirect('/')
-    # else:
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -58,14 +50,14 @@ def logout_user(request):
     return redirect('login_page')
 
 
-@login_required(login_url='login_page')
+@login_needed
 def index(request):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     context = {'post_list': queryset}
     return render(request, 'index.html', context)
 
 
-@login_required(login_url='login_page')
+@login_needed
 def new_post(request):
     form = PostForm(user=request.user)
     if request.method == 'POST':
