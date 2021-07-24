@@ -70,6 +70,13 @@ def new_post(request):
     return render(request, 'newpost.html', context)
 
 
-class PostDetail(generic.DetailView):
-    model = Post
-    template_name = 'post_detail.html'
+def post_detail(request, slug):
+    post = Post.objects.filter(slug=slug)
+    context = {'post': post[0]}
+    print(context['post'])
+    return render(request, 'postdetail.html', context)
+
+
+# class PostDetail(generic.DetailView):
+#     model = Post
+#     template_name = 'postdetail.html'
