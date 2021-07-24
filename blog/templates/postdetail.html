@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card">
+        <h2>{{ post.title }}</h2>
+        <h4>By: {{ post.author }}</h4>
+        <h5>Last updated: {{ post.updated_on }}</h5>
+        <hr>
+        <p class="card-text" >{{ post.content }}</p>
+    </div> 
+{% endblock content %}
