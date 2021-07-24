@@ -12,14 +12,26 @@ p {
 	line-height: 1.75em;
 }
 
+pre {
+	font-size: 1rem;
+	background: rgb(35, 194, 120);
+	color: black;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	border-radius: 1rem;
+	margin-bottom: 1em;
+}
+
 body {
 	background: rgb(255, 246, 229);
 	color: rgb(5, 0, 46);
-	font-family: 'Roboto Mono', monospace;
+	/* font-family: 'Roboto Mono', monospace; */
+	font-family: 'Lato', sans-serif;
 }
 
 .main-content {
 	display: flex;
+	margin-bottom: 2em;
 }
 
 .container {
@@ -35,7 +47,7 @@ body {
 	background: rgb(15, 116, 69);
 	color: white;
 	padding: 1em;
-	width: 35ch;
+	width: 40ch;
 }
 
 .page-header {
@@ -90,7 +102,7 @@ a {
 }
 
 .card {
-	width: 70ch;
+	width: 80ch;
 	background: rgb(162, 255, 211);
 	padding: 1em;
 	border-radius: 1rem;

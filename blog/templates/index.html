@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load blog_extras %}
 {% block content %}
     <button><a class="new-post-btn" href="{% url 'new_post' %}">New Post</a></button>
     {% for post in post_list %}
@@ -7,7 +8,8 @@
             <h4>By: {{ post.author }}</h4>
             <h5>Last updated: {{ post.updated_on }}</h5>
             <hr>
-            <p class="card-text" >{{ post.content|slice:":200" }}</p>
+            <p class="card-text" >{{ post.content|slice:":200"|convert_markdown|safe|linebreaks }}</p>
+            <br>
             <button><a class="new-post-btn" href="{% url 'post_detail' post.slug %}">View Full Post</a></button>
         </div> 
     {% endfor %}

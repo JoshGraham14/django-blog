@@ -1,10 +1,16 @@
 {% extends "base.html" %}
+{% load blog_extras %}
+
 {% block content %}
     <div class="card">
         <h2>{{ post.title }}</h2>
         <h4>By: {{ post.author }}</h4>
         <h5>Last updated: {{ post.updated_on }}</h5>
         <hr>
-        <p class="card-text" >{{ post.content }}</p>
+        {{ post.content|convert_markdown|safe|linebreaks }}
     </div> 
 {% endblock content %}
+
+{% block side-bar %}
+    
+{% endblock side-bar %}
