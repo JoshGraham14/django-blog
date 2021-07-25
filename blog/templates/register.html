@@ -1,15 +1,38 @@
-<h1>Register</h1>
-
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.username.label }}: {{ form.username }}
-    <br>
-    {{ form.email.label }}: {{ form.email }}
-    <br>
-    {{ form.password1.label }}: {{ form.password1 }}
-    <br>
-    {{ form.password2.label }}: {{ form.password2 }}
-    <br>
-    <input type="submit" name="Create User">
-    {{ form.errors }}
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login-register.css' %}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div>
+                <div class="form-input">{{ form.username.label }}:</div> 
+                <div class="register-input" >{{ form.username }}</div>
+            </div>
+            <div>
+                <div class="form-input">{{ form.email.label }}:</div> 
+                <div class="register-input">{{ form.email }}</div>
+            </div>
+            <div>
+                <div class="form-input">{{ form.password1.label }}:</div> 
+                <div class="register-input">{{ form.password1 }}</div>
+            </div>
+            <div>
+                <div class="form-input">{{ form.password2.label }}:</div> 
+                <div class="register-input">{{ form.password2 }}</div>
+            </div>
+            <input class="submit-btn" type="submit" name="Create User">
+            <a class="signup-link" href="{% url 'login_page' %}">Already have an account? Login!</a>
+            {{ form.errors }}
+        </form>
+    </div>
+</body>
+</html>

@@ -47,7 +47,7 @@ body {
 	background: rgb(15, 116, 69);
 	color: white;
 	padding: 1em;
-	width: 40ch;
+	width: 35ch;
 }
 
 .page-header {
@@ -102,7 +102,7 @@ a {
 }
 
 .card {
-	width: 80ch;
+	width: 75ch;
 	background: rgb(162, 255, 211);
 	padding: 1em;
 	border-radius: 1rem;
@@ -123,7 +123,7 @@ button {
 
 button:hover {
 	cursor: pointer;
-	background: rgb(110, 120, 255);
+	background: rgb(110, 185, 255);
 }
 
 .new-post-btn {

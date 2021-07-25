@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--color-green-light: rgb(162, 255, 211);
+	--color-green-dark: rgb(15, 116, 69);
+	--color-beige: rgb(255, 246, 229);
+}
+
+body {
+	background: var(--color-beige);
+	color: var(--color-green-dark);
+	font-family: 'Lato', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	top: 40%;
+	transform: translate(0, -50%);
+	width: 70ch;
+	border: 0.4em solid var(--color-green-dark);
+	background: var(--color-green-light);
+	padding: 1em;
+	border-radius: 1rem;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1em;
+	margin-top: 1em;
+}
+
+label {
+	font-size: 1.5rem;
+}
+
+.form-input {
+	border: none;
+	font-size: 1.5rem;
+	width: 100%;
+	padding: 0.1em;
+	margin-top: 0.25em;
+	border-radius: 0.25em;
+}
+
+.register-input {
+	width: 50ch;
+}
+
+.submit-btn {
+	padding: 0.25em 1.5em;
+	font-size: 1.5rem;
+	border: 0.2em solid var(--color-green-dark);
+	color: var(--color-green-dark);
+	background: none;
+	border-radius: 0.25em;
+}
+
+.submit-btn:hover {
+	color: var(--color-beige);
+	background: var(--color-green-dark);
+	cursor: pointer;
+}
+
+.signup-link {
+	text-decoration: none;
+	color: blue;
+}
