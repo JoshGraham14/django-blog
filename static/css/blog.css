@@ -62,6 +62,18 @@ body {
 	margin-left: 1em;
 }
 
+.logout-btn {
+	background: rgb(243, 131, 131);
+	padding: 0.5em 1.5em;
+	border-radius: 0.75em;
+}
+
+.logout-btn:hover {
+	background: rgb(167, 49, 49);
+	color: white;
+	cursor: pointer;
+}
+
 .new-post-form {
 	display: flex;
 	flex-direction: column;
@@ -136,8 +148,7 @@ button:hover {
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
-	right: 1em;
 	text-align: right;
+	margin-bottom: 1em;
+	margin-right: 1em;
 }
