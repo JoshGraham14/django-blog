@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Edit Post</h1>
+
+    <form class='new-post-form' action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Update">
+    </form>
+{% endblock content %}
+
+{% block side-bar %}
+    <h1>Formatting Basics</h1>
+    <hr>
+    <p>
+        When creating a blog post, you can use either markdown or html to help
+        with formatting and customization.
+    </p>
+    <br>
+    <h2>Headers: </h2>
+    <p>
+        # Largest Header (h1) <br>
+        ## Smaller Header (h2) <br>
+        ... <br>
+        ###### Smallest header (h6) <br>
+    </p>
+    <br>
+    <h2>Emphasis: </h2>
+    <p>
+        Wrap text in asterisks for *<em>italics</em>*<br>
+        Double wrap for **<b>bold</b>**
+    </p>
+    <br>
+    <h2>Code: </h2>
+    <p>
+        For inline code, wrap in `<code>backticks</code>`<br>
+        For block code, wrap in &lt;pre&gt; tags<br>
+        For example:<br><br>
+        &lt;pre&gt;<br>
+        def print_nums(num1, num2):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;for i in range(10):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+        &lt;/pre&gt;<br><br>
+        This will render as:
+    </p>
+    <br>
+<pre>
+
+def print_nums(num1, num2):
+    for i in range(10):
+        print(i)
+</pre>
+{% endblock side-bar %}

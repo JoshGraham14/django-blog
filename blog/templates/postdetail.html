@@ -8,7 +8,14 @@
         <h5>Last updated: {{ post.updated_on }}</h5>
         <hr>
         {{ post.content|convert_markdown|safe|linebreaks }}
+
+        {% if user == post.author %}
+            <button><a class="new-post-btn" href="{% url 'edit_post' post.slug %}">Edit Post</a></button>
+        {% endif %}
+
     </div> 
+    <h3>User: {{ user }}</h3>
+    <h3>Post: {{ post.author }}</h3>
 {% endblock content %}
 
 {% block side-bar %}

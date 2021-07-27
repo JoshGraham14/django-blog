@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views import generic
+from django.views.generic import UpdateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -70,10 +70,15 @@ def new_post(request):
     return render(request, 'newpost.html', context)
 
 
+class UpdatePostView(UpdateView):
+    model = Post
+    template_name = 'editpost.html'
+    fields = ['title', 'content']
+
+
 def post_detail(request, slug):
     post = Post.objects.filter(slug=slug)
-    context = {'post': post[0]}
-    print(context['post'])
+    context = {'post': post[0], 'user': request.user}
     return render(request, 'postdetail.html', context)
 
 
