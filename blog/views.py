@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm, CreateUserForm
 from .decorators import unauthenticated_user, login_needed
+from django.http import Http404
 
 
 @unauthenticated_user
@@ -75,13 +76,16 @@ class UpdatePostView(UpdateView):
     template_name = 'editpost.html'
     fields = ['title', 'content']
 
+    def dispatch(self, request, *args, **kwargs):
+        """Ensures that only the author is allowed to edit the post."""
+        obj = self.get_object()
+        if obj.author != self.request.user:
+            raise Http404(
+                'You are not allowed to edit this post because you are not the author.')
+        return super(UpdatePostView, self).dispatch(request, *args, **kwargs)
+
 
 def post_detail(request, slug):
     post = Post.objects.filter(slug=slug)
     context = {'post': post[0], 'user': request.user}
     return render(request, 'postdetail.html', context)
-
-
-# class PostDetail(generic.DetailView):
-#     model = Post
-#     template_name = 'postdetail.html'

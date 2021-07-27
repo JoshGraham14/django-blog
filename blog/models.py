@@ -28,6 +28,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
+        """Redirect to the post detail page after editing a post."""
         return reverse('post_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
