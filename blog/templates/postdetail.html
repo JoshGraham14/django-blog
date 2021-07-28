@@ -2,6 +2,7 @@
 {% load blog_extras %}
 
 {% block content %}
+    <button><a class="new-post-btn" href="{% url 'home' %}">Back to all Posts</a></button>
     <div class="card">
         <h2>{{ post.title }}</h2>
         <h4>By: {{ post.author }}</h4>
@@ -12,10 +13,7 @@
         {% if user == post.author %}
             <button><a class="new-post-btn" href="{% url 'edit_post' post.slug %}">Edit Post</a></button>
         {% endif %}
-
-    </div> 
-    <h3>User: {{ user }}</h3>
-    <h3>Post: {{ post.author }}</h3>
+    </div>
 {% endblock content %}
 
 {% block side-bar %}
