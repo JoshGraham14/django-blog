@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from django.urls import reverse
 from django.utils import timezone
 
+# Status constants for whether a post is a draft or published
 STATUS = (
     (0, 'Draft'),
     (1, 'Publish')
@@ -24,6 +25,7 @@ class Post(models.Model):
         ordering = ['-created_on']
 
     def save(self, *args, **kwargs):
+        """Generates a slug when a post is created or updated"""
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
 

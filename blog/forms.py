@@ -7,16 +7,19 @@ from .models import Post
 
 
 class PostForm(ModelForm):
+    """Model Form to create and edit Posts"""
     class Meta:
         model = Post
         fields = ['title', 'content']
 
+    # adding a css class to the title field
     title = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'new-post-title'
         }
     ))
 
+    # adding a css class to the content field
     content = forms.CharField(widget=forms.Textarea(
         attrs={
             'class': 'new-post-content'
@@ -28,6 +31,7 @@ class PostForm(ModelForm):
         super(PostForm, self).__init__(*args, **kwargs)
 
     def save(self, commit=True):
+        """This method ensures the post saves properly when edited"""
         inst = super(PostForm, self).save(commit=False)
         inst.author = self._user
         inst.status = 1
@@ -38,6 +42,7 @@ class PostForm(ModelForm):
 
 
 class CreateUserForm(UserCreationForm):
+    """Class to create a registration form"""
 
     def __init__(self, *args, **kwargs):
         super(CreateUserForm, self).__init__(*args, **kwargs)

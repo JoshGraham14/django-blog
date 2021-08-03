@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 
 
 def unauthenticated_user(view_func):
+    """Decorator to prevent logged in users accessing a page"""
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('/')
@@ -13,6 +14,7 @@ def unauthenticated_user(view_func):
 
 
 def login_needed(view_func):
+    """Decorator to prevent a logged out user from accessing a page"""
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
             return view_func(request, *args, **kwargs)

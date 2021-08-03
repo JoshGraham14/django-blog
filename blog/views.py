@@ -13,6 +13,7 @@ from django.http import Http404
 
 @unauthenticated_user
 def register(request):
+    """Register Page View for creating a new user"""
     form = CreateUserForm()
 
     if request.method == 'POST':
@@ -30,6 +31,7 @@ def register(request):
 
 @unauthenticated_user
 def login_page(request):
+    """Login Page View"""
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -47,12 +49,14 @@ def login_page(request):
 
 
 def logout_user(request):
+    """Logout View"""
     logout(request)
     return redirect('login_page')
 
 
 @login_needed
 def index(request):
+    """Index view for the home page of the blog"""
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     context = {'post_list': queryset}
     return render(request, 'index.html', context)
@@ -60,6 +64,7 @@ def index(request):
 
 @login_needed
 def new_post(request):
+    """New Post View"""
     form = PostForm(user=request.user)
     if request.method == 'POST':
         form = PostForm(request.POST, user=request.user)
@@ -93,13 +98,20 @@ class UpdatePostView(UpdateView):
 
 
 def post_detail(request, slug):
+    """View to display a full post"""
     post = Post.objects.filter(slug=slug)
     context = {'post': post[0], 'user': request.user}
     return render(request, 'postdetail.html', context)
 
 
 def post_delete(request, slug):
+    """View to delete a post (user must be the author of the post)"""
     post = Post.objects.filter(slug=slug)
+
+    # prevents a user that is not the author from deleting the post
+    # by accessing the delete view through the url
+    if request.user != post[0].author:
+        return redirect('/')
     if request.method == 'POST':
         post.delete()
         return redirect('/')
