@@ -78,6 +78,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 70ch;
+	justify-content: center;
 }
 
 .new-post-form label {
@@ -145,6 +146,35 @@ button:hover {
 
 .new-post-btn:hover {
 	color: black;
+}
+
+.new-post-title {
+	font-size: 1.25em;
+	padding: 0.1em;
+}
+
+.new-post-content {
+	font-family: 'Lato', sans-serif;
+	font-size: 1.25em;
+	padding: 0.1em;
+	height: 30ch;
+}
+
+.submit-btn {
+	border: none;
+	font-size: 1.1em;
+	background: rgb(47, 28, 214);
+	padding: 1em 0em;
+	color: white;
+	border-radius: 1.125rem;
+	margin-top: 2em;
+	margin-left: 13em;
+	margin-right: 13em;
+}
+
+.submit-btn:hover {
+	cursor: pointer;
+	background: rgb(110, 185, 255);
 }
 
 footer {

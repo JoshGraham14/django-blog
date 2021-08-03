@@ -11,6 +11,18 @@ class PostForm(ModelForm):
         model = Post
         fields = ['title', 'content']
 
+    title = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'new-post-title'
+        }
+    ))
+
+    content = forms.CharField(widget=forms.Textarea(
+        attrs={
+            'class': 'new-post-content'
+        }
+    ))
+
     def __init__(self, *args, **kwargs):
         self._user = kwargs.pop('user')
         super(PostForm, self).__init__(*args, **kwargs)
