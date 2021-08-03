@@ -89,3 +89,12 @@ def post_detail(request, slug):
     post = Post.objects.filter(slug=slug)
     context = {'post': post[0], 'user': request.user}
     return render(request, 'postdetail.html', context)
+
+
+def post_delete(request, slug):
+    post = Post.objects.filter(slug=slug)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('/')
+    context = {'post': post}
+    return render(request, 'index.html', context)

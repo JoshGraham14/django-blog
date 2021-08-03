@@ -177,6 +177,16 @@ button:hover {
 	background: rgb(110, 185, 255);
 }
 
+.delete-btn {
+	border: none;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 footer {
 	text-align: right;
 	margin-bottom: 1em;

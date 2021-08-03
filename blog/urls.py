@@ -8,5 +8,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('logout/', views.logout_user, name='logout_page'),
     path('new-post/', views.new_post, name='new_post'),
-    path('post/<slug:slug>/edit/', views.UpdatePostView.as_view(), name='edit_post')
+    path('post/<slug:slug>/edit/', views.UpdatePostView.as_view(), name='edit_post'),
+    path('post/<slug:slug>/delete/', views.post_delete, name='post_delete')
 ]

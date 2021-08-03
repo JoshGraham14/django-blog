@@ -11,7 +11,13 @@
         {{ post.content|convert_markdown|safe|linebreaks }}
         <br>
         {% if user == post.author %}
-            <button><a class="new-post-btn" href="{% url 'edit_post' post.slug %}">Edit Post</a></button>
+            <div class="buttons">
+                <button><a class="new-post-btn" href="{% url 'edit_post' post.slug %}">Edit Post</a></button>
+                <form action="{% url 'post_delete' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    <input class="logout-btn delete-btn" type="submit" value="Delete">
+                </form>
+            </div>   
         {% endif %}
     </div>
 {% endblock content %}
