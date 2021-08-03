@@ -72,12 +72,19 @@ def new_post(request):
 
 
 class UpdatePostView(UpdateView):
+    """View to edit/update Posts"""
     model = Post
     template_name = 'editpost.html'
-    fields = ['title', 'content']
+    form_class = PostForm
+
+    def get_form_kwargs(self):
+        """Retrieves the request.user kwarg for the PostForm __init__ method"""
+        kwargs = super(UpdatePostView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def dispatch(self, request, *args, **kwargs):
-        """Ensures that only the author is allowed to edit the post."""
+        """Ensures that only the author is allowed to edit the post"""
         obj = self.get_object()
         if obj.author != self.request.user:
             raise Http404(
