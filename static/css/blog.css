@@ -119,6 +119,7 @@ a {
 	background: rgb(162, 255, 211);
 	padding: 1em;
 	border-radius: 1rem;
+	box-shadow: 0 0 0.5em 0.01em black;
 }
 
 .card-text {
